@@ -6,7 +6,7 @@ const StateWise=()=>{
 
 
 const getCovidData= async ()=>{
-  const res= await fetch('https://data.covid19india.org/v4/min/data.min.json');
+  const res= await fetch('	https://api.covid19india.org/data.json');
   const actualData = await res.json();
   console.log(actualData.StateWise);
   setData(actualData.StateWise);
@@ -14,7 +14,7 @@ const getCovidData= async ()=>{
 
 
     useEffect(()=>{
-   //getCovidData();
+   getCovidData();
     },[]
     );
     return(
@@ -22,7 +22,7 @@ const getCovidData= async ()=>{
        
         <div className="container-fluid mt-5">
         <div className="main-heading">
-        <h1 className="mb-5 text-center"><span classNmae="font-weight-bold">India</span>COVIS-19</h1>
+        <h1 className="mb-5 text-center"><span className="font-weight-bold">India</span>COVIS-19</h1>
         </div>
 
 <div className="table-responsive">
@@ -38,20 +38,20 @@ const getCovidData= async ()=>{
 
 </tr>
 </thead>
-<tbody>
+ <tbody>
 
 
 {
     data.map((curElem, ind)=>{
 return(
 
-    <tr>
-<td>{curElem.State}</td>
-<td>Confirmed</td>
-<td>Recovered</td>
-<td>Death</td>
-<td>Active</td>
-<td>Updated</td>
+    <tr key={ind}>
+<td>{curElem.state}</td>
+<td>{curElem.confirmed}</td>
+<td>{curElem.recovered}</td>
+<td>{curElem.death}</td>
+<td>{curElem.active}</td>
+<td>{curElem.updated}</td>
 
 </tr>
 );
